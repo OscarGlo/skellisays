@@ -24,9 +24,10 @@ div > * {
 	border-radius: 16px;
 }
 
-input {
-	height: 50px;
+textarea {
 	width: 80%;
+	height: 100px;
+	resize: none;
 	
 	outline: none;
 	border-top-left-radius: 0;
@@ -35,5 +36,6 @@ input {
 	
 	font-family: "Comic Sans MS", "Comic Sans", sans-serif;
 	font-size: 20px;
+	line-height: 30px;
 	text-align: center;
 }

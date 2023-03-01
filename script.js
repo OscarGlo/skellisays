@@ -1,6 +1,6 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const input = document.querySelector("input");
+const textarea = document.querySelector("textarea");
 
 // Load image
 let template = new Image();
@@ -17,11 +17,17 @@ template.addEventListener("load", () => {
 	ctx.textBaseline = "middle";
 
 	// Start updating
-	input.addEventListener("input", () => render(input.value));
+	textarea.addEventListener("input", () => render(textarea.value));
 	render("Ok");
 });
 
+const lineHeight = 45;
+
 function render(text) {
 	ctx.drawImage(template, 0, 0);
-	ctx.fillText(text, canvas.width / 2, canvas.height * 0.21);
+
+	const lines = text.split("\n");
+	const startHeight = canvas.height * 0.21 - ((lines.length - 1) * lineHeight) / 2;
+	for (const i in lines)
+		ctx.fillText(lines[i], canvas.width / 2, startHeight + i * lineHeight);
 }
